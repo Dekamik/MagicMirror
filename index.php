@@ -5,8 +5,9 @@
 	<title>Magic Mirror</title>
 	<meta name="description" content="The Magic Mirror">
 	<meta http-equiv="refresh" content="15" />
-	<link rel="stylesheet" href="style.css">
-	<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">    
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300'>
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
@@ -64,9 +65,9 @@
             else echo '<br/><h2>Inga bussar går den närmsta timmen.</h2>';
 
             for($i = 0; $i < $limit; $i++) {
-                echo '<h2 class="smaller">'.$feed[$i]['title'].'</h2>';
+                echo '<h2 class="smaller"><i class="fas fa-bus"></i> '.$feed[$i]['title'].'</h2>';
                 echo '<br/>';
-                echo '<h2 class="time">'.$feed[$i]['time'].'</h2>';
+                echo '<h2 class="time"><i class="far fa-clock"></i> '.$feed[$i]['time'].'</h2>';
                 echo '<h2>...</h2>';
             }
             curl_close($ch);
@@ -80,7 +81,7 @@
             $day = date('w');
             // Everyone knows it's party-time between 22:00 and 03:00 on fridays and saturdays
             $isParty = ((($day == 5 or $day == 6) and ($now == 22 or $now == 23)) or (($day == 6 or $day == 0) and ($now >= 00 and $now <= 02)));
-            
+
             if (($now > 06) and ($now < 8)) echo 'God morgon!';
             else if (($now >= 8) and ($now < 12)) echo 'Ha en bra dag!';
             else if (($now >= 12) and ($now < 13)) echo 'Lunchdags!';
