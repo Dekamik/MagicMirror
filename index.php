@@ -19,14 +19,14 @@
         <h2>...</h2>
         <?php // RSS feed
             include('src/rss_feed.php');
-            $ini = parse_ini_file('conf.ini');
+            $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
             display_rss($ini['feed_rss_url'], $ini['feed_rss_limit']);
 		?>
 	</div>
 	<div id="right">
         <?php // SL Feed
             include('src/sl_feed.php');
-            $ini = parse_ini_file('conf.ini');
+            $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
             display_sl($ini['feed_sl_url'], $ini['feed_sl_limit']);
         ?>
 	</div>
