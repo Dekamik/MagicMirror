@@ -1,0 +1,85 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+	
+body {
+	background: #000;
+	color: #fff;
+}
+
+#wrapper { 
+	width: 1050px;
+	height: 1680px;
+	margin: 0 auto;
+}
+
+#left {
+	width: 400px;
+	margin: 50px 50px 0 0;
+	height: 1450px;
+	float: left;
+	text-align: left;
+}
+
+#right {
+	width: 375px;
+	height: 1450px;
+	margin: 200px 35px 0 0;
+	float: right;
+	text-align: right;
+}
+
+#bottom {
+	width: 850px;
+	height: 100px;
+	margin: 0 100px 0 100px;
+	clear: both;
+	background: url(bg.gif) repeat-x;
+	text-align: center;
+}
+
+#clock {
+	text-align: center;
+}
+
+h1 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 102px;
+	font-weight: 300;
+	line-height: 102px;
+}
+
+h2 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 24px;
+	font-weight: 300;
+}
+	
+h2.smaller {
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+
+h2.time {
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+	
+h3 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 42px;
+	font-weight: 300;
+	padding: 20px 0 0 0;
+}
+	
+p {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+}	
+	
+p.date {
+	font-size: 16px;
+	font-weight: 600;
+}
