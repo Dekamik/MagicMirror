@@ -13,6 +13,9 @@ function display_rss($feed_url, $feed_limit) {
     }
 
     $limit = $feed_limit;
+    if ($limit > 0) echo '<h2>...</h2>';
+    else echo '<h2>Inga nyheter i flödet.</h2>';
+
     for($i=0; $i<$limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
         $description = $feed[$i]['desc'];

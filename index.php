@@ -16,7 +16,6 @@
 		<div id="clock"></div>
         <br/>
         <hr/>
-        <h2>...</h2>
         <?php // RSS feed
             include('src/rss_feed.php');
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
@@ -24,7 +23,7 @@
 		?>
 	</div>
 	<div id="right">
-        <?php // SL Feed
+        <?php // SL feed
             include('src/sl_feed.php');
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
             display_sl($ini['feed_sl_url'], $ini['feed_sl_limit']);
@@ -34,7 +33,7 @@
     <hr/>
     <h3>
         <?php 
-        include('src/bottom_message.php');
+            include('src/bottom_message.php');
         ?>
     </h3>
 	</div>
