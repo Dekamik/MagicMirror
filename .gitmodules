@@ -1,0 +1,4 @@
+[submodule "vendor/yr-php-library"]
+	path = vendor/yr-php-library
+	url = git@github.com:eigan/yr-php-library.git
+	branch = master
