@@ -33,7 +33,7 @@ function display_sl($feed_url, $feed_limit, $tmp_dir = './') {
     for($i = 0; $i < $limit; $i++) {
         echo '<h2 class="smaller"><i class="fas fa-bus"></i> '.$feed[$i]['title'].'</h2>';
         echo '<br/>';
-        echo '<h2 class="time"><i class="far fa-clock"></i> '.$feed[$i]['time'].'</h2>';
+        echo '<h2 class="time"><i class="far fa-hourglass"></i> '.$feed[$i]['time'].'</h2>';
         echo '<h2>...</h2>';
     }
     curl_close($ch);
