@@ -14,6 +14,17 @@ function get_temperature_icon($temperature) {
     return '<i class="fas fa-temperature-low"></i>';
 }
 
+function get_weather_icon_cloud_cover($metar, $is_night) {
+    // Clouds don't care about the moon or the sun
+    if (strpos($metar, 'BKN') or strpos($metar, 'OVC')) {
+        return '<i class="fas fa-cloud"></i>';
+    }
+    else if (strpos($metar, 'FEW') or strpos($metar, 'SCT')) {
+        return $is_night ? '<i class="fas fa-cloud-moon"></i>' : '<i class="fas fa-cloud-sun"></i>';
+    }
+    return $is_night ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+}
+
 function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $precipitation) {
     // Precipitation
     if ($temperature > 0) {
@@ -31,16 +42,11 @@ function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $pre
     }
 
     // No precipitation
-    if (is_sun_set($time, $sunset_time, $sunrise_time)) {
-        return '<i class="fas fa-moon"></i>';
-    }
-    else {
-        return '<i class="fas fa-sun"></i>';
-    }
+    return get_weather_icon_cloud_cover('', is_sun_set($time, $sunset_time, $sunrise_time));
 }
 
 function display_weather($location, $feed_limit) {
-    $yr = Yr\Yr::create($location, "/tmp");
+    $yr = Yr\Yr::create($location, "/tmp", 5);
 
     $current = $yr->getCurrentForecast();
     $temp = $current->getTemperature();
