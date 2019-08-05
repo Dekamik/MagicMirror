@@ -65,7 +65,7 @@ function display_weather($location, $feed_limit) {
 
     $forecasts = $yr->getPeriodicForecasts();
     echo '<table>';
-    for ($i = 0; $i < $feed_limit; $i++) {
+    for ($i = 1; $i < $feed_limit + 1; $i++) {
         $for_time = $forecasts[$i]->getFrom()->format("H:i");
         $for_temp = $forecasts[$i]->getTemperature();
         $for_prec = $forecasts[$i]->getPrecipitation();
