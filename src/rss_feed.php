@@ -13,6 +13,7 @@ function display_rss($feed_url, $feed_limit) {
         array_push($feed, $item);
     }
 
+    echo '<h2>...</h2>';
     for($i=0; $i<$feed_limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
         $description = $feed[$i]['desc'];
