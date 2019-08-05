@@ -24,17 +24,18 @@ hr {
 	margin: 0 auto;
 }
 
-.left {
+.feed {
 	width: 400px;
-	margin: 50px 50px 0 0;
 	height: 1500px;
+}
+
+.feed.left {
+	margin: 50px 50px 0 0;
 	float: left;
 	text-align: left;
 }
 
-.right {
-	width: 400px;
-	height: 1500px;
+.feed.right {
 	margin: 50px 35px 0 0;
 	float: right;
 	text-align: right;

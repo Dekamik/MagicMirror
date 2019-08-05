@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="wrapper">
-	<div class="left">
+	<div class="feed left">
 		<div id="clock"></div>
         <hr/>
         <?php // RSS feed
@@ -21,7 +21,7 @@
             display_rss($ini['rss_url'], $ini['rss_limit']);
 		?>
 	</div>
-	<div class="right">
+	<div class="feed right">
         <?php // SL feed & periodic weather forecast
             include('src/sl_feed.php');
             include('src/weather_feed.php');
