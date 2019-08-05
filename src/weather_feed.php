@@ -2,12 +2,18 @@
 
 include( __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'yr-php-library'.DIRECTORY_SEPARATOR.'autoload.php');
 
-function to_hour($datetime) {
+function get_minute($datetime) {
+    return (int) $datetime->format('i');
+}
+
+function get_hour($datetime) {
     return (int) $datetime->format('H');
 }
 
-function is_sun_set($time, $sunset_time, $sunrise_time) {
-    return (to_hour($time) > to_hour($sunset_time) and to_hour($time) <= 23) or (to_hour($time) >= 0 and to_hour($time) < to_hour($sunrise_time));
+function is_night($time, $sunset_time, $sunrise_time) {
+    // return true if time is between sunset and midnight, or if time is between midnight and sunrise
+    return ((get_hour($time) > get_hour($sunset_time) and get_minute($time) > get_minute($sunset_time)) and (get_hour($time) <= 23 and get_hour($time) <= 59))
+        or ((get_hour($time) >= 0 and get_minute($time) >= 0) and (get_hour($time) < get_hour($sunrise_time) and get_minute($time) < get_minute($sunrise_time)));
 }
 
 function get_temperature_icon($temperature) {
@@ -48,7 +54,7 @@ function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $pre
     }
 
     // No precipitation
-    return get_weather_icon_cloud_cover('', is_sun_set($time, $sunset_time, $sunrise_time));
+    return get_weather_icon_cloud_cover('', is_night($time, $sunset_time, $sunrise_time));
 }
 
 function display_weather($location, $feed_limit, $prec_low_med, $prec_med_hi) {
