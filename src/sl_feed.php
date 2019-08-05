@@ -1,6 +1,6 @@
 <?php
 
-function display_sl($feed_url, $feed_limit) {
+function display_sl($feed_url, $feed_limit, $tmp_dir = './') {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $feed_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -13,6 +13,17 @@ function display_sl($feed_url, $feed_limit) {
             'time' => $node['DisplayTime'],
         );
         array_push($feed, $item);
+    }
+
+    // The cache works like a stack in order to only handle one-time outages
+    if (count($feed) == 0) {
+        if (file_exists($tmp_dir.'sl_feed.cache')) {
+            $feed = unserialize(file_get_contents($tmp_dir.'/sl_feed.cache'));
+            unlink($tmp_dir.'sl_feed.cache');
+        }
+    }
+    else {
+        file_put_contents($tmp_dir.'/sl_feed.cache', serialize($feed));
     }
 
     $limit = count($feed) > $feed_limit ? $feed_limit : count($feed);

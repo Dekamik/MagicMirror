@@ -2,9 +2,12 @@
 
 include( __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'yr-php-library'.DIRECTORY_SEPARATOR.'autoload.php');
 
+function to_hour($datetime) {
+    return (int) $datetime->format('H');
+}
+
 function is_sun_set($time, $sunset_time, $sunrise_time) {
-    $sunrise_time->add(new DateInterval('P1D'));
-    return $time > $sunset_time and $time < $sunrise_time;
+    return (to_hour($time) > to_hour($sunset_time) and to_hour($time) <= 23) or (to_hour($time) >= 0 and to_hour($time) < to_hour($sunrise_time));
 }
 
 function get_temperature_icon($temperature) {
