@@ -25,7 +25,7 @@ hr {
 }
 
 .feed {
-	width: 400px;
+	width: 425px;
 	height: 1500px;
 }
 
@@ -49,10 +49,6 @@ hr {
 	text-align: center;
 }
 
-.weather {
-	width: 400px;
-}
-
 #clock {
 	text-align: center;
 }
@@ -64,6 +60,10 @@ h1 {
 	line-height: 102px;
 }
 
+h1.smaller {
+	font-size: 96px;
+}
+
 h1.icon_height {
 	height: 104px;
 }
@@ -72,11 +72,6 @@ h2 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	font-weight: 300;
-}
-	
-h2.smaller {
-	font-size: 22px;
-	letter-spacing: 1px;
 }
 
 h2.time {
@@ -104,7 +99,7 @@ p.date {
 
 table {
 	table-layout: fixed;
-	width: 400px;
+	width: inherit;
 }
 
 td {

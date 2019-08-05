@@ -16,45 +16,29 @@ function is_night($time, $sunset_time, $sunrise_time) {
         or ((get_hour($time) >= 0 and get_minute($time) >= 0) and (get_hour($time) < get_hour($sunrise_time) and get_minute($time) < get_minute($sunrise_time)));
 }
 
-function get_temperature_icon($temperature) {
-    if ($temperature >= 10) {
-        return '<i class="fas fa-temperature-high"></i>';
+function get_icon_from_desc($desc, $is_night) {
+    $thunder = stristr($desc, 'thunder') ? '<i class="fas fa-bolt"></i>' : '';
+    switch ($desc) {
+        case stristr($desc, 'clear sky'):
+            return $is_night ? $thunder.'<i class="fas fa-moon"></i>' : $thunder.'<i class="fas fa-sun"></i>';
+        case stristr($desc, 'partly cloudy'):
+        case stristr($desc, 'fair'):
+            return $is_night ? $thunder.'<i class="fas fa-cloud-moon"></i>' : $thunder.'<i class="fas fa-cloud-sun"></i>';
+        case stristr($desc, 'fog'):
+            return $thunder.'<i class="fas fa-smog"></i>';
+        case stristr($desc, 'cloudy'):
+            return $thunder.'<i class="fas fa-cloud"></i>';
+        case stristr($desc, 'light rain'):
+        case stristr($desc, 'rain'):
+            return $thunder.'<i class="fas fa-cloud-rain"></i>';
+        case stristr($desc, 'heavy rain'):
+            return $thunder.'<i class="fas fa-cloud-showers-heavy"></i>';
+        case stristr($desc, 'snow'):
+            return $thunder.'<i class="fas fa-snowflake"></i>';
+        case stristr($desc, 'sleet'):
+        default:
+            return $thunder.'<i class="fas fa-poo-storm"></i>';
     }
-    return '<i class="fas fa-temperature-low"></i>';
-}
-
-function get_weather_icon_cloud_cover($metar, $is_night) {
-    // Clouds don't care about the moon or the sun
-    if (strpos($metar, 'BKN') or strpos($metar, 'OVC')) {
-        return '<i class="fas fa-cloud"></i>';
-    }
-    else if (strpos($metar, 'FEW') or strpos($metar, 'SCT')) {
-        return $is_night ? '<i class="fas fa-cloud-moon"></i>' : '<i class="fas fa-cloud-sun"></i>';
-    }
-    return $is_night ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-}
-
-function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $precipitation, $prec_low_med, $prec_med_hi) {
-    // Precipitation
-    if ($temperature > 0) {
-        if ($precipitation > 0 and $precipitation < $prec_low_med) {
-            return '<i class="fas fa-cloud-rain"></i>';
-        }
-        else if ($precipitation >= $prec_low_med and $precipitation < $prec_med_hi) {
-            return '<i class="fas fa-cloud-showers-heavy"></i>';
-        }
-        else if ($precipitation >= $prec_med_hi) {
-            return '<i class="fas fa-poo-storm"></i>';
-        }
-    }
-    else {
-        if ($precipitation > 0) {
-            return '<i class="fas fa-snowflake"></i>';
-        }
-    }
-
-    // No precipitation
-    return get_weather_icon_cloud_cover('', is_night($time, $sunset_time, $sunrise_time));
 }
 
 function display_weather($location, $feed_limit, $prec_low_med, $prec_med_hi) {
@@ -62,12 +46,10 @@ function display_weather($location, $feed_limit, $prec_low_med, $prec_med_hi) {
 
     $current = $yr->getCurrentForecast();
     $temp = $current->getTemperature();
-    $prec = $current->getPrecipitation();
     $sunset = $yr->getSunset();
     $sunrise = $yr->getSunrise();
-    $icon = get_weather_icon($current->getFrom(), $sunset, $sunrise, $temp, $prec, $prec_low_med, $prec_med_hi);
+    $icon = get_icon_from_desc($current->getSymbol(), is_night($current->getFrom(), $sunset, $sunrise));
     $wind = $current->getWindSpeed();
-    echo '<div class="weather">';
     echo '<h1>'.$icon.$temp.'°C</h1>';
     echo '<h2><i class="fas fa-wind"></i> '.$wind.' m/s</h2>';
     echo '<hr/>';
@@ -77,11 +59,9 @@ function display_weather($location, $feed_limit, $prec_low_med, $prec_med_hi) {
     for ($i = 1; $i < $feed_limit + 1; $i++) {
         $for_time = $forecasts[$i]->getFrom()->format("H:i");
         $for_temp = $forecasts[$i]->getTemperature();
-        $for_prec = $forecasts[$i]->getPrecipitation();
-        $for_icon = get_weather_icon($forecasts[$i]->getFrom(), $sunset, $sunrise, $for_temp, $for_prec, $prec_low_med, $prec_med_hi);
+        $for_icon = get_icon_from_desc($forecasts[$i]->getSymbol(), is_night($forecasts[$i]->getFrom(), $sunset, $sunrise));
         $for_wind = $forecasts[$i]->getWindSpeed();
-        echo '<tr><td align="left"><i class="far fa-clock"></i> '.$for_time.'</td><td>'.$for_icon.' '.$for_temp.'°C</td><td><i class="fas fa-wind"></i> '.$for_wind.' m/s</td></tr>';
+        echo '<tr><td align="left"><i class="fas fa-clock"></i> '.$for_time.'</td><td>'.$for_icon.' '.$for_temp.'°C</td><td><i class="fas fa-wind"></i> '.$for_wind.' m/s</td></tr>';
     }
     echo '</table>';
-    echo '</div>';
 }
