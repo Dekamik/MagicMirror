@@ -1,4 +1,5 @@
 <?php
+
 function display_sl($feed_url, $feed_limit) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $feed_url);
@@ -26,4 +27,5 @@ function display_sl($feed_url, $feed_limit) {
     }
     curl_close($ch);
 }
+
 ?>

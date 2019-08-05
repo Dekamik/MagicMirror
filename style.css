@@ -25,7 +25,7 @@ body {
 .right {
 	width: 400px;
 	height: 1450px;
-	margin: 200px 35px 0 0;
+	margin: 50px 35px 0 0;
 	float: right;
 	text-align: right;
 }
@@ -37,6 +37,10 @@ body {
 	clear: both;
 	background: url(bg.gif) repeat-x;
 	text-align: center;
+}
+
+.weather {
+	width: 400px;
 }
 
 #clock {
@@ -77,9 +81,19 @@ p {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	font-weight: 300;
-}	
+}
 	
 p.date {
 	font-size: 16px;
 	font-weight: 600;
+}
+
+table {
+	table-layout: fixed;
+	width: 400px;
+}
+
+td {
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
 }

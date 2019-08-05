@@ -20,7 +20,7 @@ function updateTime() {
     weekday[4] = "Torsdag";
     weekday[5] = "Fredag";
     weekday[6] = "Lördag";
-    var currentDay = weekday[currentTime.getDay()]; 
+    var currentDay = weekday[currentTime.getDay()];
 
     var actualmonth = new Array(12);
     actualmonth[0] = "Januari";

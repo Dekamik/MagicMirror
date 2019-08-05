@@ -1,4 +1,5 @@
 <?php 
+
 function display_rss($feed_url, $feed_limit) {
     $rss = new DOMDocument();
     $rss->load($feed_url);
@@ -12,11 +13,7 @@ function display_rss($feed_url, $feed_limit) {
         array_push($feed, $item);
     }
 
-    $limit = $feed_limit;
-    if ($limit > 0) echo '<h2>...</h2>';
-    else echo '<h2>Inga nyheter i flödet.</h2>';
-
-    for($i=0; $i<$limit; $i++) {
+    for($i=0; $i<$feed_limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
         $description = $feed[$i]['desc'];
         $date = date('j F', strtotime($feed[$i]['date']));
@@ -26,4 +23,5 @@ function display_rss($feed_url, $feed_limit) {
     }
     echo '<p>'.parse_url($feed_url, PHP_URL_HOST).'</p>';
 }
+
 ?>

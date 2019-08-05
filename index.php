@@ -23,16 +23,21 @@
 		?>
 	</div>
 	<div class="right">
-        <?php // SL feed
+        <?php // SL feed & periodic weather forecast
             include('src/sl_feed.php');
+            include('src/weather_feed.php');
+
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
+
+            display_weather($ini['feed_yr_location'], $ini['feed_yr_limit']);
+            echo '<br/><hr/>';
             display_sl($ini['feed_sl_url'], $ini['feed_sl_limit']);
         ?>
 	</div>
 	<div class="bottom">
     <hr/>
     <h3>
-        <?php 
+        <?php
             include('src/bottom_message.php');
         ?>
     </h3>
