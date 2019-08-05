@@ -37,7 +37,7 @@ function updateTime() {
     actualmonth[11] = "December";
     var currentMonth = actualmonth[currentTime.getMonth ()];
     
-    var currentTimeString = "<h1>" + currentHoursleadingzero + ":" + currentMinutesleadingzero + "</h1><h2>" + currentDay + " " + currentDate + currentDateSuffix + " " + currentMonth + "</h2>";
+    var currentTimeString = '<h1 class="icon_height">' + currentHoursleadingzero + ':' + currentMinutesleadingzero + '</h1><h2><i class="fas fa-calendar-day"></i> ' + currentDay + " " + currentDate + currentDateSuffix + " " + currentMonth + "</h2>";
     document.getElementById("clock").innerHTML = currentTimeString;
 }
 document.addEventListener("DOMContentLoaded", function() {

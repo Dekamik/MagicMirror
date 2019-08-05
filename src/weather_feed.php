@@ -61,7 +61,7 @@ function display_weather($location, $feed_limit) {
     echo '<div class="weather">';
     echo '<h1>'.$icon.$temp.'°C</h1>';
     echo '<h2><i class="fas fa-wind"></i> '.$wind.' m/s</h2>';
-    echo '<br/><hr/><br/>';
+    echo '<hr/>';
 
     $forecasts = $yr->getPeriodicForecasts();
     echo '<table>';

@@ -14,7 +14,6 @@
 <div class="wrapper">
 	<div class="left">
 		<div id="clock"></div>
-        <br/>
         <hr/>
         <?php // RSS feed
             include('src/rss_feed.php');

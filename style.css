@@ -8,6 +8,16 @@ body {
 	color: #fff;
 }
 
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #fff;
+	background-color: #fff;
+	margin: 1em 0; 
+	padding: 0; 
+}
+
 .wrapper { 
 	width: 1050px;
 	height: 1680px;
@@ -51,6 +61,10 @@ h1 {
 	font-size: 102px;
 	font-weight: 300;
 	line-height: 102px;
+}
+
+h1.icon_height {
+	height: 104px;
 }
 
 h2 {
