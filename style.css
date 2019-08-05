@@ -27,14 +27,14 @@ hr {
 .left {
 	width: 400px;
 	margin: 50px 50px 0 0;
-	height: 1550px;
+	height: 1500px;
 	float: left;
 	text-align: left;
 }
 
 .right {
 	width: 400px;
-	height: 1550px;
+	height: 1500px;
 	margin: 50px 35px 0 0;
 	float: right;
 	text-align: right;
