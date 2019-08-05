@@ -8,13 +8,13 @@ body {
 	color: #fff;
 }
 
-#wrapper { 
+.wrapper { 
 	width: 1050px;
 	height: 1680px;
 	margin: 0 auto;
 }
 
-#left {
+.left {
 	width: 400px;
 	margin: 50px 50px 0 0;
 	height: 1450px;
@@ -22,7 +22,7 @@ body {
 	text-align: left;
 }
 
-#right {
+.right {
 	width: 400px;
 	height: 1450px;
 	margin: 200px 35px 0 0;
@@ -30,7 +30,7 @@ body {
 	text-align: right;
 }
 
-#bottom {
+.bottom {
 	width: 850px;
 	height: 100px;
 	margin: 0 100px 0 100px;

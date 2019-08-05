@@ -11,8 +11,8 @@
     <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
-<div id="wrapper">
-	<div id="left">
+<div class="wrapper">
+	<div class="left">
 		<div id="clock"></div>
         <br/>
         <hr/>
@@ -22,14 +22,14 @@
             display_rss($ini['feed_rss_url'], $ini['feed_rss_limit']);
 		?>
 	</div>
-	<div id="right">
+	<div class="right">
         <?php // SL feed
             include('src/sl_feed.php');
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
             display_sl($ini['feed_sl_url'], $ini['feed_sl_limit']);
         ?>
 	</div>
-	<div id="bottom">
+	<div class="bottom">
     <hr/>
     <h3>
         <?php 
