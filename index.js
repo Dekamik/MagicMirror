@@ -1,10 +1,10 @@
 function updateTime() {
     var currentTime = new Date ( );
-    var currentHours = currentTime.getHours ( );   
+    var currentHours = currentTime.getHours();   
     var currentHoursleadingzero = currentHours > 9 ? currentHours : '0' + currentHours;
-    var currentMinutes = currentTime.getMinutes ( );
+    var currentMinutes = currentTime.getMinutes();
     var currentMinutesleadingzero = currentMinutes > 9 ? currentMinutes : '0' + currentMinutes; // If the number is 9 or below we add a 0 before the number.
-    var currentDate = currentTime.getDate ( );
+    var currentDate = currentTime.getDate();
     var currentDateSuffix = (currentDate == 1 
                             || currentDate == 2 
                             || currentDate == 21 
@@ -35,7 +35,7 @@ function updateTime() {
     actualmonth[9] = "Oktober";
     actualmonth[10] = "November";
     actualmonth[11] = "December";
-    var currentMonth = actualmonth[currentTime.getMonth ()];
+    var currentMonth = actualmonth[currentTime.getMonth()];
     
     var currentTimeString = '<h1 class="icon_height">' + currentHoursleadingzero + ':' + currentMinutesleadingzero + '</h1><h2><i class="fas fa-calendar-day"></i> ' + currentDay + " " + currentDate + currentDateSuffix + " " + currentMonth + "</h2>";
     document.getElementById("clock").innerHTML = currentTimeString;
