@@ -31,11 +31,14 @@ function get_weather_icon_cloud_cover($metar, $is_night) {
 function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $precipitation) {
     // Precipitation
     if ($temperature > 0) {
-        if ($precipitation > 0 and $precipitation < 10) {
+        if ($precipitation > 0 and $precipitation < 0.5) {
             return '<i class="fas fa-cloud-rain"></i>';
         }
-        else if ($precipitation >= 10) {
+        else if ($precipitation >= 0.5 and $precipitation < 1.0) {
             return '<i class="fas fa-cloud-showers-heavy"></i>';
+        }
+        else if ($precipitation >= 1.0) {
+            return '<i class="fas fa-poo-storm"></i>';
         }
     }
     else {
@@ -76,5 +79,3 @@ function display_weather($location, $feed_limit) {
     echo '</table>';
     echo '</div>';
 }
-
-?>

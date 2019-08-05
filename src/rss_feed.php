@@ -23,5 +23,3 @@ function display_rss($feed_url, $feed_limit) {
     }
     echo '<p>'.parse_url($feed_url, PHP_URL_HOST).'</p>';
 }
-
-?>

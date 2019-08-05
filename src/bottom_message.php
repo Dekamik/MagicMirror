@@ -14,5 +14,3 @@ else if (($now >= 20) and ($now < 22)) echo 'Ha en bra kväll!';
 else if ($isParty) echo 'FEKKE, WOO!!';
 else if (($now >= 22) and ($now <= 23)) echo 'God natt, ses i morgon!';
 else if (($now >= 00) and ($now < 06)) echo 'Shh, sover...';
-
-?>

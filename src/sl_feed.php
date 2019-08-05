@@ -38,5 +38,3 @@ function display_sl($feed_url, $feed_limit, $tmp_dir = './') {
     }
     curl_close($ch);
 }
-
-?>
