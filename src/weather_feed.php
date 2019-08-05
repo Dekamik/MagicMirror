@@ -28,22 +28,22 @@ function get_weather_icon_cloud_cover($metar, $is_night) {
     return $is_night ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
 }
 
-function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $precipitation) {
+function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $precipitation, $prec_low_med, $prec_med_hi) {
     // Precipitation
     if ($temperature > 0) {
-        if ($precipitation > 0 and $precipitation < 0.5) {
+        if ($precipitation > 0 and $precipitation < $prec_low_med) {
             return '<i class="fas fa-cloud-rain"></i>';
         }
-        else if ($precipitation >= 0.5 and $precipitation < 1.0) {
+        else if ($precipitation >= $prec_low_med and $precipitation < $prec_med_hi) {
             return '<i class="fas fa-cloud-showers-heavy"></i>';
         }
-        else if ($precipitation >= 1.0) {
+        else if ($precipitation >= $prec_med_hi) {
             return '<i class="fas fa-poo-storm"></i>';
         }
     }
     else {
         if ($precipitation > 0) {
-            return '<i class="fas fa-snowflake"></i>';   
+            return '<i class="fas fa-snowflake"></i>';
         }
     }
 
@@ -51,7 +51,7 @@ function get_weather_icon($time, $sunset_time, $sunrise_time, $temperature, $pre
     return get_weather_icon_cloud_cover('', is_sun_set($time, $sunset_time, $sunrise_time));
 }
 
-function display_weather($location, $feed_limit) {
+function display_weather($location, $feed_limit, $prec_low_med, $prec_med_hi) {
     $yr = Yr\Yr::create($location, "/tmp", 5);
 
     $current = $yr->getCurrentForecast();
@@ -59,7 +59,7 @@ function display_weather($location, $feed_limit) {
     $prec = $current->getPrecipitation();
     $sunset = $yr->getSunset();
     $sunrise = $yr->getSunrise();
-    $icon = get_weather_icon($current->getFrom(), $sunset, $sunrise, $temp, $prec);
+    $icon = get_weather_icon($current->getFrom(), $sunset, $sunrise, $temp, $prec, $prec_low_med, $prec_med_hi);
     $wind = $current->getWindSpeed();
     echo '<div class="weather">';
     echo '<h1>'.$icon.$temp.'°C</h1>';
@@ -72,7 +72,7 @@ function display_weather($location, $feed_limit) {
         $for_time = $forecasts[$i]->getFrom()->format("H:i");
         $for_temp = $forecasts[$i]->getTemperature();
         $for_prec = $forecasts[$i]->getPrecipitation();
-        $for_icon = get_weather_icon($forecasts[$i]->getFrom(), $sunset, $sunrise, $for_temp, $for_prec);
+        $for_icon = get_weather_icon($forecasts[$i]->getFrom(), $sunset, $sunrise, $for_temp, $for_prec, $prec_low_med, $prec_med_hi);
         $for_wind = $forecasts[$i]->getWindSpeed();
         echo '<tr><td align="left"><i class="far fa-clock"></i> '.$for_time.'</td><td>'.$for_icon.' '.$for_temp.'°C</td><td><i class="fas fa-wind"></i> '.$for_wind.' m/s</td></tr>';
     }

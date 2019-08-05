@@ -18,7 +18,7 @@
         <?php // RSS feed
             include('src/rss_feed.php');
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
-            display_rss($ini['feed_rss_url'], $ini['feed_rss_limit']);
+            display_rss($ini['rss_url'], $ini['rss_limit']);
 		?>
 	</div>
 	<div class="right">
@@ -28,9 +28,9 @@
 
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
 
-            display_weather($ini['feed_yr_location'], $ini['feed_yr_limit']);
+            display_weather($ini['yr_location'], $ini['yr_limit'], $ini['yr_prec_low_med'], $ini['yr_prec_med_hi']);
             echo '<br/><hr/>';
-            display_sl($ini['feed_sl_url'], $ini['feed_sl_limit']);
+            display_sl($ini['sl_url'], $ini['sl_limit']);
         ?>
 	</div>
 	<div class="bottom">
