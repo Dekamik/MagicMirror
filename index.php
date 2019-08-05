@@ -34,12 +34,10 @@
         ?>
 	</div>
 	<div class="bottom">
-    <hr/>
-    <h3>
-        <?php
-            include('src/bottom_message.php');
-        ?>
-    </h3>
+        <hr/>
+        <h3>
+            <?php include('src/bottom_message.php'); ?>
+        </h3>
 	</div>
 </div>
 </body>
