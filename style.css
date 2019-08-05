@@ -74,6 +74,11 @@ h2 {
 	font-weight: 300;
 }
 
+h2.smaller {
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+
 h2.time {
 	font-size: 22px;
 	letter-spacing: 1px;
@@ -104,5 +109,5 @@ table {
 
 td {
 	font-family: 'Roboto', sans-serif;
-	font-size: 20px;
+	font-size: 24px;
 }
