@@ -28,7 +28,7 @@
 
             $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
 
-            display_weather($ini['yr_location'], $ini['yr_limit'], $ini['yr_prec_low_med'], $ini['yr_prec_med_hi']);
+            display_weather($ini['yr_location'], $ini['yr_limit']);
             echo '<br/><hr/>';
             display_sl($ini['sl_url'], $ini['sl_limit']);
         ?>

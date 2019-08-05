@@ -28,10 +28,11 @@ function get_icon_from_desc($desc, $is_night) {
             return $thunder.'<i class="fas fa-smog"></i>';
         case stristr($desc, 'cloudy'):
             return $thunder.'<i class="fas fa-cloud"></i>';
-        case stristr($desc, 'light rain'):
-        case stristr($desc, 'rain'):
-            return $thunder.'<i class="fas fa-cloud-rain"></i>';
         case stristr($desc, 'heavy rain'):
+            return $thunder.'<i class="fas fa-water"></i>';
+        case stristr($desc, 'light rain'):
+            return $thunder.'<i class="fas fa-cloud-rain"></i>';
+        case stristr($desc, 'rain'):
             return $thunder.'<i class="fas fa-cloud-showers-heavy"></i>';
         case stristr($desc, 'snow'):
             return $thunder.'<i class="fas fa-snowflake"></i>';
@@ -41,7 +42,7 @@ function get_icon_from_desc($desc, $is_night) {
     }
 }
 
-function display_weather($location, $feed_limit, $prec_low_med, $prec_med_hi) {
+function display_weather($location, $feed_limit) {
     $yr = Yr\Yr::create($location, "/tmp", 5);
 
     $current = $yr->getCurrentForecast();
