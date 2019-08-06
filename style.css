@@ -18,7 +18,8 @@ hr {
 	padding: 0; 
 }
 
-.wrapper { 
+.wrapper {
+	position: relative;
 	width: 1050px;
 	height: 1680px;
 	margin: 0 auto;
@@ -42,6 +43,8 @@ hr {
 }
 
 .bottom {
+	position: absolute;
+	bottom: 50px;
 	width: 850px;
 	height: 100px;
 	margin: 0 100px 0 100px;

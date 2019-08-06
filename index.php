@@ -9,34 +9,43 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300'>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="index.js"></script>
+    <?php // Includes and variables
+        include('src/bottom_message.php');
+        include('src/rss.php');
+        include('src/sl_feed.php');
+        include('src/weather_feed.php');
+
+        $app = parse_ini_file('app.ini');
+        $conf = parse_ini_file($app['path_conf']);
+    ?>
 </head>
 <body>
 <div class="wrapper">
 	<div class="feed left">
 		<div id="clock"></div>
         <hr/>
-        <?php // RSS feed
-            include('src/rss_feed.php');
-            $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
-            display_rss($ini['rss_url'], $ini['rss_limit']);
+        <?php // RSS side feed
+            $feed = get_rss_feed($conf['srss_url']);
+            display_rss_side($feed, $conf['srss_limit'], $conf['srss_url']);
 		?>
 	</div>
 	<div class="feed right">
         <?php // SL feed & periodic weather forecast
-            include('src/sl_feed.php');
-            include('src/weather_feed.php');
-
-            $ini = parse_ini_file(parse_ini_file('app.ini')['path_conf']);
-
-            display_weather($ini['yr_location'], $ini['yr_limit']);
-            echo '<br/><hr/>';
-            display_sl($ini['sl_url'], $ini['sl_limit']);
+            display_weather($conf['yr_location'], $conf['yr_limit']);
+            echo '<hr/>';
+            display_sl($conf['sl_url'], $conf['sl_limit']);
         ?>
 	</div>
+    <div class="bottom_feed">
+        <?php // RSS bottom feed
+            $feed = get_rss_feed($conf['brss_url']);
+            display_rss_bottom($feed, $conf['brss_limit'], $conf['brss_url']);
+        ?>
+    </div>
 	<div class="bottom">
         <hr/>
         <h3>
-            <?php include('src/bottom_message.php'); ?>
+            <?php display_bottom_message(); ?>
         </h3>
 	</div>
 </div>

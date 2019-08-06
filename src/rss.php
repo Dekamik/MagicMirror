@@ -1,6 +1,6 @@
 <?php 
 
-function display_rss($feed_url, $feed_limit) {
+function get_rss_feed($feed_url) {
     $rss = new DOMDocument();
     $rss->load($feed_url);
     $feed = array();
@@ -12,9 +12,12 @@ function display_rss($feed_url, $feed_limit) {
         );
         array_push($feed, $item);
     }
+    return $feed;
+}
 
+function display_rss_side($feed, $limit, $url = '') {
     echo '<h2>...</h2>';
-    for($i=0; $i<$feed_limit; $i++) {
+    for($i=0; $i<$limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
         $description = $feed[$i]['desc'];
         $date = date('j F', strtotime($feed[$i]['date']));
@@ -22,5 +25,12 @@ function display_rss($feed_url, $feed_limit) {
         echo '<p class="date">'.$date.'</p>';
         echo '<p>'.strip_tags($description, '<p><b>').'</p><h2>...</h2>';
     }
-    echo '<p>'.parse_url($feed_url, PHP_URL_HOST).'</p>';
+    if ($url !== '')
+    {
+        echo '<p>'.parse_url($url, PHP_URL_HOST).'</p>';
+    }
+}
+
+function display_rss_bottom($feed, $limit, $url = '') {
+
 }
