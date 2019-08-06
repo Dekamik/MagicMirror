@@ -38,7 +38,7 @@ function display_rss_bottom($feed, $limit, $url = '') {
         $date = date('j F', strtotime($feed[$i]['date']));
 
         echo '<div>';
-        if ($i == 0) echo '<p>'.parse_url($url, PHP_URL_HOST).'</p><br/>';
+        if ($url !== '' and $i == 0) echo '<p>'.parse_url($url, PHP_URL_HOST).'</p><br/>';
         echo '<h2 class="smaller">'.$title.'</h2>';
         echo '<p class="date">'.$date.'</p>';
         echo '<p>'.strip_tags($description, '<p><b>').'</p>';
