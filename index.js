@@ -10,7 +10,7 @@ function updateTime() {
                             || currentDate == 21 
                             || currentDate == 22 
                             || currentDate == 31) 
-                            ? ":a" : ":e"; 
+                            ? ":a" : ":e";
 
     var weekday = new Array(7);
     weekday[0] = "Söndag";

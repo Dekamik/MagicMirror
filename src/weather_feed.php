@@ -10,8 +10,16 @@ function get_hour($datetime) {
     return (int) $datetime->format('H');
 }
 
+/**
+ * Checks if $time is between $sunset_time and $sunrise_time, only counting hours and minutes, 
+ * ignoring the date.
+ * 
+ * @param   DateTime    $time           Time to compare
+ * @param   DateTime    $sunset_time    Time when sun sets (date is ignored)
+ * @param   DateTime    $sunrise_time   Time when sun rises (date is ignored)
+ * @return  true if time is between sunset and midnight, or if time is between midnight and sunrise
+ */
 function is_night($time, $sunset_time, $sunrise_time) {
-    // return true if time is between sunset and midnight, or if time is between midnight and sunrise
     return ((get_hour($time) > get_hour($sunset_time) and get_minute($time) > get_minute($sunset_time)) and (get_hour($time) <= 23 and get_hour($time) <= 59))
         or ((get_hour($time) >= 0 and get_minute($time) >= 0) and (get_hour($time) < get_hour($sunrise_time) and get_minute($time) < get_minute($sunrise_time)));
 }
@@ -37,8 +45,9 @@ function get_icon_from_desc($desc, $is_night) {
         case stristr($desc, 'snow'):
             return $thunder.'<i class="fas fa-snowflake"></i>';
         case stristr($desc, 'sleet'):
-        default:
             return $thunder.'<i class="fas fa-poo-storm"></i>';
+        default:
+            return $thunder.'<i class="fas fa-question"></i>';
     }
 }
 

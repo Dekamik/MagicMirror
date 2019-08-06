@@ -17,7 +17,7 @@ function get_rss_feed($feed_url) {
 
 function display_rss_side($feed, $limit, $url = '') {
     echo '<h2>...</h2>';
-    for($i=0; $i<$limit; $i++) {
+    for($i = 0; $i < $limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
         $description = $feed[$i]['desc'];
         $date = date('j F', strtotime($feed[$i]['date']));
@@ -32,5 +32,15 @@ function display_rss_side($feed, $limit, $url = '') {
 }
 
 function display_rss_bottom($feed, $limit, $url = '') {
+    for ($i = 0; $i < $limit; $i++) {
+        $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
+        $description = $feed[$i]['desc'];
+        $date = date('j F', strtotime($feed[$i]['date']));
 
+        echo '<div>';
+        echo '<h2 class="smaller">'.$title.'</h2>';
+        echo '<p class="date">'.$date.'</p>';
+        echo '<p>'.strip_tags($description, '<p><b>').'</p>';
+        echo '</div>';
+    }
 }

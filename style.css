@@ -52,6 +52,21 @@ hr {
 	text-align: center;
 }
 
+.bottom_feed {
+	position: absolute;
+	bottom: 150px;
+	width: inherit;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.bottom_feed div {
+	max-width: 300px;
+	padding: 0 20px;
+}
+
 #clock {
 	text-align: center;
 }
