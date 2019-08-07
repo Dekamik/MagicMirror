@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="index.js"></script>
     <?php // Includes and variables
-        require('vendor/autoload.php');
-        
-        include('src/bottom_message.php');
-        include('src/rss.php');
-        include('src/sl_feed.php');
-        include('src/weather_feed.php');
+        require 'vendor/autoload.php';
+
+        include 'src/bottom_message.php';
+        include 'src/rss.php';
+        include 'src/sl_feed.php';
+        include 'src/weather_feed.php';
 
         $app = parse_ini_file('app.ini');
         $conf = parse_ini_file($app['path_conf']);
@@ -47,11 +47,7 @@
 	<div class="bottom">
         <hr/>
         <h3>
-            <?php 
-                $messages = get_all_messages($conf);
-                $message = pick_message($messages, $conf['messages_regex_cron']);
-                display_bottom_message(); 
-            ?>
+            <?php display_bottom_message($conf); ?>
         </h3>
 	</div>
 </div>

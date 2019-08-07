@@ -1,6 +1,7 @@
 {
     "require": {
         "eigan/yr": "^1.2",
-        "dragonmantank/cron-expression": "^2.3"
+        "dragonmantank/cron-expression": "^2.3",
+        "athari/yalinqo": "^2.4"
     }
 }
