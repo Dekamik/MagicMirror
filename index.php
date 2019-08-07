@@ -45,7 +45,11 @@
 	<div class="bottom">
         <hr/>
         <h3>
-            <?php display_bottom_message(); ?>
+            <?php 
+                $messages = get_all_messages($conf);
+                $message = pick_message($messages, $conf['messages_regex_cron']);
+                display_bottom_message(); 
+            ?>
         </h3>
 	</div>
 </div>

@@ -29,15 +29,27 @@ function calculate_cron_specificity($cron_expr) {
 function get_all_messages($conf) {
     $messages = array();
     foreach($conf as $key => $value) {
-        if (preg_match('^message_.+', $key)) {
+        if (preg_match('/message_.+/', $key)) {
             $messages[$key] = $value;
         }
     }
     return $messages;
 }
 
-function pick_message($messages, $date) {
-    
+function pick_message($messages, $cron_regex) {
+    $cron_msgs = array();
+    foreach ($messages as $message) {
+        $cron = preg_split($cron_regex, $message)[0];
+        $run_time = Cron\CronExpression::factory($cron)->getPreviousRunDate('now', 0, true);
+        print_r($run_time);
+        if (array_key_exists($run_time, $cron_msgs)) {
+
+        }
+        else {
+            $cron_msgs[$run_time] = $message;
+        }
+    }
+
 }
 
 function display_bottom_message() {
