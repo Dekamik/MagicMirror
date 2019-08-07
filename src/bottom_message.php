@@ -4,7 +4,7 @@
  * A crude function for testing how specific a given cron expression is.
  * 
  * @param   string  $cron_expr   Cron expression to test
- * @return  int specificity as an int. Higher int means more specific.
+ * @return  int signifying the cron expression's specificity. Higher int means more specific.
  */
 function calculate_cron_specificity($cron_expr) {
     $spec = 500;
