@@ -15,7 +15,10 @@ function get_rss_feed($feed_url) {
     return $feed;
 }
 
-function display_rss_side($feed, $limit, $url = '') {
+function display_rss_side($conf) {
+    $url = $conf['srss_url'];
+    $limit = $conf['srss_limit'];
+    $feed = get_rss_feed($url);
     echo '<h2>...</h2>';
     for($i = 0; $i < $limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
@@ -31,7 +34,10 @@ function display_rss_side($feed, $limit, $url = '') {
     }
 }
 
-function display_rss_bottom($feed, $limit, $url = '') {
+function display_rss_bottom($conf) {
+    $url = $conf['brss_url'];
+    $limit = $conf['brss_limit'];
+    $feed = get_rss_feed($url);
     for ($i = 0; $i < $limit; $i++) {
         $title = str_replace(' & ', ' &amp; ', $feed[$i]['title']);
         $description = $feed[$i]['desc'];

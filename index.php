@@ -26,10 +26,7 @@
 	<div class="feed left">
 		<div id="clock"></div>
         <hr/>
-        <?php // RSS side feed
-            $feed = get_rss_feed($conf['srss_url']);
-            display_rss_side($feed, $conf['srss_limit'], $conf['srss_url']);
-		?>
+        <?php display_rss_side($conf); ?>
 	</div>
 	<div class="feed right">
         <?php // SL feed & periodic weather forecast
@@ -39,10 +36,7 @@
         ?>
 	</div>
     <div class="bottom_feed">
-        <?php // RSS bottom feed
-            $feed = get_rss_feed($conf['brss_url']);
-            display_rss_bottom($feed, $conf['brss_limit'], $conf['brss_url']);
-        ?>
+        <?php display_rss_bottom($conf); ?>
     </div>
 	<div class="bottom">
         <hr/>
