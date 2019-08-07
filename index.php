@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="index.js"></script>
     <?php // Includes and variables
+        require('vendor/autoload.php');
+        
         include('src/bottom_message.php');
         include('src/rss.php');
         include('src/sl_feed.php');

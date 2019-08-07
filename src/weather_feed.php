@@ -1,7 +1,5 @@
 <?php
 
-include( __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'yr-php-library'.DIRECTORY_SEPARATOR.'autoload.php');
-
 function get_minute($datetime) {
     return (int) $datetime->format('i');
 }
