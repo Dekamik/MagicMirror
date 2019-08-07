@@ -54,7 +54,7 @@ function pick_message($messages, $cron_regex) {
             $cron_msgs[$message->run_date_key] = $message;
         }
     }
-    return from($cron_msgs)
+    return from($messages)
         ->orderByDescending('$m ==> $m->run_date')
         ->first()
         ->message;
