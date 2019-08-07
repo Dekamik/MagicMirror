@@ -2,3 +2,7 @@
 	path = vendor/yr-php-library
 	url = git@github.com:eigan/yr-php-library.git
 	branch = master
+[submodule "vendor/cron-expression"]
+	path = vendor/cron-expression
+	url = git@github.com:dragonmantank/cron-expression.git
+	branch = master
