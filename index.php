@@ -12,7 +12,7 @@
     <?php // Includes and variables
         require 'vendor/autoload.php';
 
-        include 'src/bottom_message.php';
+        include 'src/cron-messages/bottom_message.php';
         include 'src/rss.php';
         include 'src/sl_feed.php';
         include 'src/weather_feed.php';
