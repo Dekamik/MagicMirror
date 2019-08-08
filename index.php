@@ -7,7 +7,7 @@
 	<meta http-equiv="refresh" content="15" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
     <script type="text/javascript" src="index.js"></script>
     <?php // Includes and variables
         require 'vendor/autoload.php';

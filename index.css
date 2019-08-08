@@ -125,6 +125,27 @@ table {
 	width: inherit;
 }
 
+table.sl {
+	width: inherit;
+}
+
+table.sl tr td {
+	font-size: 20px;
+}
+
+table.sl tr td:first-child {
+	width: 75px;
+}
+
+table.sl tr td:nth-child(2) {
+	width: 225px;
+}
+
+table.sl tr td:first-child,
+table.sl tr td:nth-child(2) {
+	text-align: left;
+}
+
 td {
 	font-family: 'Roboto', sans-serif;
 	font-size: 24px;

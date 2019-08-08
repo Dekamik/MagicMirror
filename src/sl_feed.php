@@ -9,7 +9,8 @@ function display_sl($feed_url, $feed_limit, $tmp_dir = './') {
     $feed = array();
     foreach($json['ResponseData']['Buses'] as $node) {
         $item = array(
-            'title' => 'Buss '.$node['LineNumber'].' mot '.$node['Destination'],
+            'line' => $node['LineNumber'],
+            'dest' => $node['Destination'],
             'time' => $node['DisplayTime'],
         );
         array_push($feed, $item);
@@ -29,14 +30,17 @@ function display_sl($feed_url, $feed_limit, $tmp_dir = './') {
         }
     }
 
+    echo '<h2 class="smaller">SL - Ursviks Holme</h2>';
+
     $limit = count($feed) > $feed_limit ? $feed_limit : count($feed);
-    if ($limit > 0) echo '<h2>...</h2>';
+    if ($limit > 0) echo '<table class="sl"><thead><td align="left">Linje</td><td align="left">Destination</td><td>Avgångstid</td></thead>';
     else echo '<h2>Inga bussar går den närmsta timmen.</h2>';
 
     for($i = 0; $i < $limit; $i++) {
-        echo '<h2 class="smaller"><i class="fas fa-bus"></i> '.$feed[$i]['title'].'</h2>';
-        echo '<h2 class="time"><i class="fas fa-hourglass"></i> '.$feed[$i]['time'].'</h2>';
-        echo '<h2>...</h2>';
+        echo '<tr><td><i class="fas fa-bus"></i>&nbsp;'.$feed[$i]['line'].'</td><td>'.$feed[$i]['dest'].'</td><td>'.$feed[$i]['time'].'</td></tr>';
     }
+
+    if ($limit > 0) echo '</table>';
+
     curl_close($ch);
 }
